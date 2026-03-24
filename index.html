@@ -374,7 +374,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#socials">Socials</a></li>
                 <li><a href="#games">Games</a></li>
-                <li><a href="#staff">Staff</a></li>
                 <li><a href="#rules">Rules</a></li>
                 <li><a href="#applications">Apps</a></li>
             </ul>
@@ -391,7 +390,7 @@
             </div>
             <p style="font-size: 1.2rem; margin-top: 1rem;">Join the cutest and most welcoming space on the internet to make friends, hang out, and share good vibes!</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                <a href="https://discord.gg/femboy" target="_blank" class="social-btn bg-discord">
+                <a href="https://discord.gg/femboyhangout" target="_blank" class="social-btn bg-discord">
                     <i class="fab fa-discord"></i> Join Main Discord
                 </a>
             </div>
@@ -402,15 +401,36 @@
             <h2 class="section-title">📱 Our Socials</h2>
             <p style="text-align: center; margin-bottom: 2rem;">Follow us on all our platforms to stay updated with events, announcements, and cute posts!</p>
             <div class="grid-4">
-                <a href="#" class="social-btn bg-insta"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#" class="social-btn bg-twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
-                <a href="#" class="social-btn bg-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
-                <a href="#" class="social-btn bg-reddit"><i class="fab fa-reddit-alien"></i> Reddit</a>
-                <a href="#" class="social-btn bg-youtube"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="#" class="social-btn bg-bluesky"><i class="fas fa-cloud"></i> Bluesky</a>
-                <a href="#" class="social-btn bg-github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://x.com/Femboy_hangout" target="_blank" class="social-btn bg-twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
+                <a href="https://www.tiktok.com/@femboyhangoutsfw" target="_blank" class="social-btn bg-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="https://www.youtube.com/@FemboyHangoutsfw" target="_blank" class="social-btn bg-youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://bsky.app/profile/femboyhangout.bsky.social" target="_blank" class="social-btn bg-bluesky"><i class="fas fa-cloud"></i> Bluesky</a>
             </div>
         </div>
+
+        <!-- Support Us Section -->
+        <div id="support" class="glass-panel" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 175, 204, 0.4)); border: 2px solid var(--pink-deep);">
+            <h2 class="section-title" style="color: #ff5e8e;"><i class="fas fa-heart"></i> Support The Community</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem;">
+                    Femboy Hangout is a passion project and will <strong style="color: var(--purple-deep);">always remain free</strong> for everyone. 
+                </p>
+                <p style="font-size: 1.05rem; margin-bottom: 2rem; color: #555;">
+                    However, running the community, servers, and future projects takes a lot of time and personal funds. We currently operate at a loss. If you enjoy your time here and want to help us keep the lights on and build new things, please consider supporting us on Ko-fi! Every little bit helps immensely. 💖
+                </p>
+                <a href="https://ko-fi.com/femboyhangout" target="_blank" class="social-btn" style="background: #29abe0; color: white; font-size: 1.4rem; padding: 1.2rem 2.5rem; border-radius: 50px; animation: pulse-btn 2s infinite;">
+                    <i class="fas fa-mug-hot"></i> Buy us a Coffee on Ko-fi
+                </a>
+            </div>
+        </div>
+        
+        <style>
+            @keyframes pulse-btn {
+                0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(41, 171, 224, 0.7); }
+                70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(41, 171, 224, 0); }
+                100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(41, 171, 224, 0); }
+            }
+        </style>
 
         <!-- Games Section -->
         <div id="games" class="grid-2">
@@ -419,7 +439,7 @@
                 <h2 class="section-title">🎮 Femboy RBLX</h2>
                 <p style="text-align: center; margin-bottom: 1.5rem;">We're making games! Check out our official Roblox group to play with us.</p>
                 <div style="text-align: center;">
-                    <a href="#" class="social-btn bg-roblox" style="width: 100%; margin-bottom: 1.5rem;">
+                    <a href="https://www.roblox.com/share/g/365832251" target="_blank" class="social-btn bg-roblox" style="width: 100%; margin-bottom: 1.5rem;">
                         <svg class="roblox-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5.4 0L0 21.6h18.6L24 2.4H5.4zM15.4 14l-4.7 1.2-1.2-4.7 4.7-1.2 1.2 4.7z"/></svg>
                         Join Femboy RBLX Group
                     </a>
@@ -455,30 +475,20 @@
             </div>
         </div>
 
-        <!-- Staff Section (Dynamically Loaded) -->
-        <div id="staff" class="glass-panel">
-            <h2 class="section-title">👑 Meet Our Staff</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">The amazing people who keep our community safe, fun, and welcoming!</p>
-            
-            <div id="staff-loading" class="loading-text">Loading staff team from Google Sheets...</div>
-            <div id="staff-container" style="display: none; display: flex; flex-direction: column;">
-                <!-- Staff cards will be injected here via index.js -->
-            </div>
-        </div>
 
-        <!-- Rules Section (Dynamically Loaded) -->
+
+        <!-- Rules Section -->
         <div id="rules" class="glass-panel">
             <h2 class="section-title">📜 Community Rules</h2>
             <p style="text-align: center; margin-bottom: 2rem;">Please read and follow these rules to ensure everyone has a great time.</p>
             
-            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-                <button id="btn-discord-rules" class="social-btn bg-discord" onclick="switchRules('discord')"><i class="fab fa-discord"></i> Discord Rules</button>
-                <button id="btn-mc-rules" class="social-btn bg-minecraft" onclick="switchRules('minecraft')" style="padding: 1rem 2rem; font-size: 1.3rem;"><i class="fas fa-cube"></i> Minecraft Rules</button>
-            </div>
-
-            <div id="rules-loading" class="loading-text">Loading rules...</div>
-            <div id="rules-container" class="rules-content" style="display: none;">
-                <!-- Rules markdown will be injected here via index.js -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <a href="https://docs.google.com/document/d/1lzv4d3QkGIBI4Q1wxxS_PH-BJ_ZlnaFeb00jZq4yfuE/edit?usp=sharing" target="_blank" class="social-btn bg-discord" style="padding: 1rem 2rem; font-size: 1.3rem;">
+                    <i class="fab fa-discord"></i> Discord Rules
+                </a>
+                <button class="social-btn bg-minecraft" style="padding: 1rem 2rem; font-size: 1.3rem; opacity: 0.7; cursor: not-allowed;" disabled>
+                    <i class="fas fa-cube"></i> Minecraft Rules (Coming Soon)
+                </button>
             </div>
         </div>
 
@@ -491,19 +501,19 @@
                     <i class="fas fa-clipboard-list" style="font-size: 3rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
                     <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">Staff Application</h3>
                     <p style="margin-bottom: 1.5rem;">Passionate about the community? Apply to join our amazing staff team!</p>
-                    <a href="#" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Apply for Staff</a>
+                    <a href="https://forms.gle/gAy7Upn9Jq6WaB7J7" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Apply for Staff</a>
                 </div>
                 <div style="background: rgba(255,255,255,0.3); padding: 2rem; border-radius: 16px; text-align: center;">
                     <i class="fas fa-undo" style="font-size: 3rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
                     <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">Unban Appeal</h3>
                     <p style="margin-bottom: 1.5rem;">Everyone makes mistakes. Submit an appeal if you wish to rejoin the Discord.</p>
-                    <a href="#" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Submit Appeal</a>
+                    <a href="https://forms.gle/5DWfWJngDnehVkHt5" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Submit Appeal</a>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>© 2026 Femboy Hangout. Enjoy yourselves and have fun :) 💖</p>
+            <p>Enjoy yourselves and have fun :) 💖</p>
         </footer>
     </div>
 
