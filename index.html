@@ -6,6 +6,8 @@
     <title>💝 Femboy Hangout ✨</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js for rendering Rules from Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
         
@@ -15,6 +17,7 @@
             --purple-soft: #b185db;
             --purple-deep: #7b2cbf;
             --white-glass: rgba(255, 255, 255, 0.4);
+            --white-glass-solid: rgba(255, 255, 255, 0.7);
             --text-main: #4a306d;
         }
 
@@ -22,6 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -55,7 +59,7 @@
             -webkit-backdrop-filter: blur(10px);
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
             margin-bottom: 2rem;
             animation: fadeIn 1s ease-out;
@@ -73,6 +77,10 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            padding: 1rem 2rem !important;
         }
         
         .logo {
@@ -103,7 +111,7 @@
 
         /* Typography */
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--purple-deep);
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
@@ -113,7 +121,8 @@
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--purple-deep);
-            font-size: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.4);
         }
 
         p {
@@ -126,17 +135,30 @@
         /* Hero */
         .hero {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
+            margin-top: 2rem;
         }
 
-        /* Grid Layout */
-        .grid {
+        /* Grid Layouts */
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
         }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
 
-        /* Buttons */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Buttons & Badges */
         .social-btn {
             display: inline-flex;
             align-items: center;
@@ -152,6 +174,7 @@
             cursor: pointer;
             font-size: 1.1rem;
             font-family: inherit;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .social-btn:hover {
@@ -160,17 +183,145 @@
         }
         
         /* Brand Colors */
-        .bg-discord { background: #5865F2; }
+        .bg-discord { background: #5865F2; font-size: 1.3rem; padding: 1rem 2rem; }
         .bg-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
         .bg-twitter { background: #1DA1F2; }
         .bg-tiktok { background: #000000; color: white; border: 1px solid #333; }
         .bg-reddit { background: #FF4500; }
+        .bg-youtube { background: #FF0000; }
+        .bg-bluesky { background: #0285FF; }
+        .bg-github { background: #24292e; }
         .bg-roblox { background: white; color: black; border: 2px solid #ddd; }
         .bg-minecraft { background: #55AA55; color: white; border: 2px solid #3E803E; }
         
         .roblox-icon {
             width: 20px;
             height: 20px;
+        }
+
+        /* Staff & Rules Content */
+        .staff-card {
+            background: rgba(255,255,255,0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+            transition: transform 0.3s;
+            margin-bottom: 0;
+        }
+        @media (max-width: 600px) {
+            .staff-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        .staff-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.6);
+            box-shadow: 0 8px 20px rgba(31, 38, 135, 0.1);
+        }
+        .staff-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--purple-soft);
+            background: var(--white-glass);
+            flex-shrink: 0;
+        }
+        .staff-info {
+            flex-grow: 1;
+        }
+        .staff-name {
+            font-size: 1.6rem;
+            color: var(--purple-deep);
+            margin-bottom: 0.2rem;
+        }
+        .staff-role {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--pink-deep);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .staff-bio {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+        
+        .folder-container {
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .folder-header {
+            background: linear-gradient(90deg, var(--purple-soft), var(--pink-deep));
+            color: white;
+            padding: 1.2rem 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: opacity 0.2s;
+        }
+        
+        .folder-header:hover {
+            opacity: 0.9;
+        }
+        
+        .folder-header .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .folder-header.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .folder-content {
+            display: none;
+            padding: 1.5rem;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .folder-content.open {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .rules-content {
+            background: var(--white-glass-solid);
+            padding: 2rem;
+            border-radius: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+            text-align: left;
+        }
+        .rules-content h1, .rules-content h2, .rules-content h3 {
+            font-size: 1.8rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--purple-deep);
+        }
+        .rules-content p, .rules-content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        .rules-content ul, .rules-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
@@ -197,6 +348,19 @@
             position: absolute;
             user-select: none;
         }
+        
+        .loading-text {
+            text-align: center;
+            font-weight: 600;
+            color: var(--purple-deep);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
     </style>
 </head>
 <body>
@@ -205,39 +369,51 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="glass-panel">
-            <div class="logo">💝 Femboy Hangout</div>
+            <div class="logo">Femboy Hangout</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Rules</a></li>
-                <li><a href="#">Unban App</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#socials">Socials</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#rules">Rules</a></li>
+                <li><a href="#applications">Apps</a></li>
             </ul>
         </nav>
 
         <!-- Hero Section -->
-        <div class="glass-panel hero">
+        <div id="home" class="glass-panel hero">
             <h1>Welcome to Femboy Hangout ✨</h1>
-            <p>The official Femboy Hangout Website. Join the cutest and most welcoming community!<br>Make friends, hang out, and share good vibes.</p>
+            <p style="font-size: 1.3rem; margin-bottom: 1.5rem;">The official Femboy Hangout Website.</p>
+            <div style="background: rgba(255,255,255,0.5); padding: 1.5rem; border-radius: 16px; display: inline-block; max-width: 800px; margin-bottom: 1rem; border: 1px solid var(--pink-soft);">
+                <p style="font-size: 1.15rem; margin-bottom: 0; font-weight: 600; color: var(--purple-deep);">
+                    Our goal since founding has been to provide a strictly SFW, Femboy, and Queer/LGBTQ+ friendly community. We were tired of the oversexualization of our community and believe we are normal human beings, not fetishes.
+                </p>
+            </div>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Join the cutest and most welcoming space on the internet to make friends, hang out, and share good vibes!</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
                 <a href="https://discord.gg/femboy" target="_blank" class="social-btn bg-discord">
-                    <i class="fab fa-discord"></i> Main Discord
+                    <i class="fab fa-discord"></i> Join Main Discord
                 </a>
             </div>
         </div>
 
-        <div class="grid">
-            <!-- Social Media Section -->
-            <div class="glass-panel">
-                <h2 class="section-title">📱 Our Socials</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Follow us on all our platforms to stay updated with events and announcements!</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <a href="#" class="social-btn bg-insta"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="#" class="social-btn bg-twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
-                    <a href="#" class="social-btn bg-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
-                    <a href="#" class="social-btn bg-reddit"><i class="fab fa-reddit-alien"></i> Reddit</a>
-                </div>
+        <!-- Social Media Section -->
+        <div id="socials" class="glass-panel">
+            <h2 class="section-title">📱 Our Socials</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Follow us on all our platforms to stay updated with events, announcements, and cute posts!</p>
+            <div class="grid-4">
+                <a href="#" class="social-btn bg-insta"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="social-btn bg-twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
+                <a href="#" class="social-btn bg-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+                <a href="#" class="social-btn bg-reddit"><i class="fab fa-reddit-alien"></i> Reddit</a>
+                <a href="#" class="social-btn bg-youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#" class="social-btn bg-bluesky"><i class="fas fa-cloud"></i> Bluesky</a>
+                <a href="#" class="social-btn bg-github"><i class="fab fa-github"></i> GitHub</a>
             </div>
+        </div>
 
+        <!-- Games Section -->
+        <div id="games" class="grid-2">
             <!-- Roblox Section -->
             <div class="glass-panel">
                 <h2 class="section-title">🎮 Femboy RBLX</h2>
@@ -275,6 +451,53 @@
                             <p style="font-size: 0.85rem; margin-bottom: 0;">Mine, rank up, and escape in our competitive and custom Prison mode.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Section (Dynamically Loaded) -->
+        <div id="staff" class="glass-panel">
+            <h2 class="section-title">👑 Meet Our Staff</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">The amazing people who keep our community safe, fun, and welcoming!</p>
+            
+            <div id="staff-loading" class="loading-text">Loading staff team from Google Sheets...</div>
+            <div id="staff-container" style="display: none; display: flex; flex-direction: column;">
+                <!-- Staff cards will be injected here via index.js -->
+            </div>
+        </div>
+
+        <!-- Rules Section (Dynamically Loaded) -->
+        <div id="rules" class="glass-panel">
+            <h2 class="section-title">📜 Community Rules</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Please read and follow these rules to ensure everyone has a great time.</p>
+            
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <button id="btn-discord-rules" class="social-btn bg-discord" onclick="switchRules('discord')"><i class="fab fa-discord"></i> Discord Rules</button>
+                <button id="btn-mc-rules" class="social-btn bg-minecraft" onclick="switchRules('minecraft')" style="padding: 1rem 2rem; font-size: 1.3rem;"><i class="fas fa-cube"></i> Minecraft Rules</button>
+            </div>
+
+            <div id="rules-loading" class="loading-text">Loading rules...</div>
+            <div id="rules-container" class="rules-content" style="display: none;">
+                <!-- Rules markdown will be injected here via index.js -->
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div id="applications" class="glass-panel">
+            <h2 class="section-title">📝 Applications</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Want to help out or need a second chance? Find our forms here.</p>
+            <div class="grid-2">
+                <div style="background: rgba(255,255,255,0.3); padding: 2rem; border-radius: 16px; text-align: center;">
+                    <i class="fas fa-clipboard-list" style="font-size: 3rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">Staff Application</h3>
+                    <p style="margin-bottom: 1.5rem;">Passionate about the community? Apply to join our amazing staff team!</p>
+                    <a href="#" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Apply for Staff</a>
+                </div>
+                <div style="background: rgba(255,255,255,0.3); padding: 2rem; border-radius: 16px; text-align: center;">
+                    <i class="fas fa-undo" style="font-size: 3rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main);">Unban Appeal</h3>
+                    <p style="margin-bottom: 1.5rem;">Everyone makes mistakes. Submit an appeal if you wish to rejoin the Discord.</p>
+                    <a href="#" target="_blank" class="social-btn" style="background: var(--purple-deep); width: 100%;">Submit Appeal</a>
                 </div>
             </div>
         </div>
