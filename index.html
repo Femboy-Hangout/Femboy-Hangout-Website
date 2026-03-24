@@ -1,44 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>💝 Femboy Hangout ✨</title>
-        <script src="index.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 Femboy Hangout ✨</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --pink-soft: #ffc8dd;
+            --pink-deep: #ffafcc;
+            --purple-soft: #b185db;
+            --purple-deep: #7b2cbf;
+            --white-glass: rgba(255, 255, 255, 0.4);
+            --text-main: #4a306d;
+        }
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-            
-            :root {
-                --pink-soft: #ffc8dd;
-                --pink-deep: #ffafcc;
-                --purple-soft: #b185db;
-                --purple-deep: #7b2cbf;
-                --white-glass: rgba(255, 255, 255, 0.7);
-                --text-main: #4a306d;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #ffc8dd, #ffafcc, #b185db, #a2d2ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
 
-            body {
-                font-family: 'Quicksand', sans-serif;
-                min-height: 100vh;
-                color: var(--text-main);
-                overflow-x: hidden;
-                background: linear-gradient(-45deg, #ffc8dd, #ffafcc, #b185db, #a2d2ff);
-                background-size: 400% 400%;
-                animation: gradientBG 15s ease infinite;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="decoration-heart">🌸</div>
-        <div class="decoration-sparkle">✨</div>
-        <div class="decoration-paw">🐾</div>
-        <div class="decoration-star">🎀</div>
-    </body>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: var(--white-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--purple-deep);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: var(--purple-deep);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--purple-deep);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--purple-deep);
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Buttons */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-family: inherit;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Brand Colors */
+        .bg-discord { background: #5865F2; }
+        .bg-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .bg-twitter { background: #1DA1F2; }
+        .bg-tiktok { background: #000000; color: white; border: 1px solid #333; }
+        .bg-reddit { background: #FF4500; }
+        .bg-roblox { background: white; color: black; border: 2px solid #ddd; }
+        .bg-minecraft { background: #55AA55; color: white; border: 2px solid #3E803E; }
+        
+        .roblox-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--purple-deep);
+            font-weight: 600;
+        }
+
+        /* Floating Decorations Wrapper */
+        .decorations-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .decoration {
+            position: absolute;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="decorations-container" id="decorations"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="glass-panel">
+            <div class="logo">💝 Femboy Hangout</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Rules</a></li>
+                <li><a href="#">Unban App</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="glass-panel hero">
+            <h1>Welcome to Femboy Hangout ✨</h1>
+            <p>The official Femboy Hangout Website. Join the cutest and most welcoming community!<br>Make friends, hang out, and share good vibes.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="https://discord.gg/femboy" target="_blank" class="social-btn bg-discord">
+                    <i class="fab fa-discord"></i> Main Discord
+                </a>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Social Media Section -->
+            <div class="glass-panel">
+                <h2 class="section-title">📱 Our Socials</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Follow us on all our platforms to stay updated with events and announcements!</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <a href="#" class="social-btn bg-insta"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#" class="social-btn bg-twitter"><i class="fab fa-twitter"></i> Twitter/X</a>
+                    <a href="#" class="social-btn bg-tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="#" class="social-btn bg-reddit"><i class="fab fa-reddit-alien"></i> Reddit</a>
+                </div>
+            </div>
+
+            <!-- Roblox Section -->
+            <div class="glass-panel">
+                <h2 class="section-title">🎮 Femboy RBLX</h2>
+                <p style="text-align: center; margin-bottom: 1.5rem;">We're making games! Check out our official Roblox group to play with us.</p>
+                <div style="text-align: center;">
+                    <a href="#" class="social-btn bg-roblox" style="width: 100%; margin-bottom: 1.5rem;">
+                        <svg class="roblox-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5.4 0L0 21.6h18.6L24 2.4H5.4zM15.4 14l-4.7 1.2-1.2-4.7 4.7-1.2 1.2 4.7z"/></svg>
+                        Join Femboy RBLX Group
+                    </a>
+                    <div style="background: rgba(255,255,255,0.3); padding: 1.5rem; border-radius: 16px;">
+                        <i class="fas fa-gamepad" style="font-size: 2.5rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main);">New Games Coming Soon!</h3>
+                        <p style="font-size: 0.95rem; margin-bottom: 0;">We are currently working on some amazing new Roblox experiences. Stay tuned for release dates!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Minecraft Section -->
+            <div class="glass-panel">
+                <h2 class="section-title">⛏️ FemboyMC</h2>
+                <p style="text-align: center; margin-bottom: 1.5rem;">Join our upcoming Minecraft server network featuring two awesome gamemodes!</p>
+                <div style="text-align: center;">
+                    <button class="social-btn bg-minecraft" style="width: 100%; margin-bottom: 1.5rem; cursor: default;">
+                        <i class="fas fa-cube"></i> IP Coming Soon!
+                    </button>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="background: rgba(255,255,255,0.3); padding: 1.5rem; border-radius: 16px;">
+                            <i class="fas fa-tree" style="font-size: 2rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">Classic SMP</h3>
+                            <p style="font-size: 0.85rem; margin-bottom: 0;">A peaceful survival multiplayer experience to build and chill with friends.</p>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.3); padding: 1.5rem; border-radius: 16px;">
+                            <i class="fas fa-gavel" style="font-size: 2rem; color: var(--purple-deep); margin-bottom: 1rem;"></i>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-main);">Prison Server</h3>
+                            <p style="font-size: 0.85rem; margin-bottom: 0;">Mine, rank up, and escape in our competitive and custom Prison mode.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 Femboy Hangout. Enjoy yourselves and have fun :) 💖</p>
+        </footer>
+    </div>
+
+    <script src="index.js"></script>
+</body>
 </html>
