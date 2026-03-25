@@ -1,6 +1,6 @@
 {
   "name": "femboy-hangout-website",
-  "main": "src/index.ts",
+  "main": "index.js",
   "compatibility_date": "2026-03-25",
   "rules": [
     {
