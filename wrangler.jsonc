@@ -2,7 +2,6 @@
   "name": "femboy-hangout-website",
   "compatibility_date": "2026-03-25",
   "assets": {
-    "directory": "./",
-    "binding": "ASSETS"
+    "directory": "./"
   }
 }
