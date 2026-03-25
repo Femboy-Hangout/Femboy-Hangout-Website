@@ -1,12 +1,8 @@
 {
   "name": "femboy-hangout-website",
-  "main": "index.js",
   "compatibility_date": "2026-03-25",
-  "rules": [
-    {
-      "type": "Text",
-      "globs": ["**/*.html"],
-      "fallthrough": true
-    }
-  ]
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS"
+  }
 }
