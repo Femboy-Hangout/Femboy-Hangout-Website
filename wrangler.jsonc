@@ -1,4 +1,12 @@
 {
-  "name": "femboyhangoutwebsite",
-  "main": "index.html"
+  "name": "Femboy-Hangout-Website",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-25-03",
+  "rules": [
+    {
+      "type": "Text",
+      "globs": ["**/*.html"],
+      "fallthrough": true
+    }
+  ]
 }
