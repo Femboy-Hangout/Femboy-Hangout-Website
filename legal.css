@@ -1,0 +1,255 @@
+/* Shared styles for the FemboyMC legal pages (tos.html, privacy.html) */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --pink-soft: #ffc8dd;
+    --pink-deep: #ffafcc;
+    --purple-soft: #b185db;
+    --purple-deep: #7b2cbf;
+    --white-glass: rgba(255, 255, 255, 0.4);
+    --white-glass-solid: rgba(255, 255, 255, 0.7);
+    --text-main: #4a306d;
+    --mc-green: #55AA55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    color: var(--text-main);
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #ffc8dd, #ffafcc, #b185db, #a2d2ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.glass-panel {
+    background: var(--white-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 100;
+    padding: 1rem 2rem !important;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--purple-deep);
+    text-decoration: none;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+}
+
+.logo i { color: var(--mc-green); }
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    font-size: 1.1rem;
+}
+
+nav a:hover, nav a.active { color: var(--purple-deep); }
+nav a.active { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Header */
+.legal-header { text-align: center; }
+
+.legal-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--purple-deep);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.updated {
+    display: inline-block;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--pink-soft);
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.summary {
+    background: rgba(255,255,255,0.5);
+    border-left: 5px solid var(--mc-green);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+}
+
+.summary p { margin-bottom: 0; }
+
+/* Table of contents */
+.toc ol {
+    columns: 2;
+    column-gap: 2rem;
+    margin-left: 1.5rem;
+}
+
+.toc li { margin-bottom: 0.4rem; font-weight: 600; break-inside: avoid; }
+
+.toc a { color: var(--purple-deep); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* Body content */
+.legal-content section {
+    scroll-margin-top: 7rem;
+    margin-bottom: 2rem;
+}
+
+.legal-content section:last-child { margin-bottom: 0; }
+
+h2 {
+    font-size: 1.7rem;
+    color: var(--purple-deep);
+    margin-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin: 1.2rem 0 0.5rem;
+}
+
+p, li {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+
+p { margin-bottom: 1rem; }
+
+ul, ol { margin: 0 0 1rem 1.8rem; }
+li { margin-bottom: 0.4rem; }
+
+a { color: var(--purple-deep); }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background: var(--white-glass-solid);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    vertical-align: top;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+th {
+    background: linear-gradient(90deg, var(--purple-soft), var(--pink-deep));
+    color: white;
+}
+
+tr:not(:last-child) td { border-bottom: 1px solid rgba(123, 44, 191, 0.12); }
+
+.table-wrap { overflow-x: auto; }
+
+/* Buttons */
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.social-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.bg-discord { background: #5865F2; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem 2rem 2rem;
+    color: var(--purple-deep);
+    font-weight: 600;
+}
+
+footer a { margin: 0 0.5rem; }
+
+/* Floating decorations (driven by index.js) */
+.decorations-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.decoration { position: absolute; user-select: none; }
+
+@media (max-width: 600px) {
+    .container { padding: 1rem; }
+    .glass-panel { padding: 1.5rem; }
+    nav { padding: 1rem 1.25rem !important; }
+    .legal-header h1 { font-size: 2.2rem; }
+    .toc ol { columns: 1; }
+}
