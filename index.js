@@ -45,5 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animations have been set up
+    // Click-to-copy for the Minecraft server IPs (Java + Bedrock)
+    document.querySelectorAll('.copy-ip').forEach((copyBtn) => {
+        const copyText = copyBtn.querySelector('.copy-ip-text');
+        if (!copyText) return;
+        const ip = copyBtn.dataset.ip;
+        let resetTimer;
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(ip);
+                copyText.textContent = 'Copied!';
+            } catch {
+                copyText.textContent = ip; // clipboard blocked, IP stays visible
+            }
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => { copyText.textContent = ip; }, 1500);
+        });
+    });
 });
